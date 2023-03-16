@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
+import bgImg from './img/bg.png';
 
 function App() {
   return (
@@ -16,7 +17,28 @@ function App() {
       </Navbar>
 
       {/* 메인사진 */}
-      <div className="main-bg"></div>
+      <div className="main-bg" style={{backgroundImage : 'url('+bgImg+')'}}></div>
+
+      {/* 상품 */}
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">
+            <img src=''/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src=''/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src=''/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+        </div>
+      </div> 
     </div>
   );
 }
