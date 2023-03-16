@@ -23,17 +23,53 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            <img src=''/>
+            <img src={process.env.PUBLIC_URL + '/shoes/nike.jpg'} width='85%' height='70%'/>
             <h4>상품명</h4>
             <p>상품설명</p>
           </div>
           <div className="col-md-4">
-            <img src=''/>
+            <img src={process.env.PUBLIC_URL + '/shoes/nb992.jpg'} width='85%' height='70%'/>
             <h4>상품명</h4>
             <p>상품설명</p>
           </div>
           <div className="col-md-4">
-            <img src=''/>
+            <img src={process.env.PUBLIC_URL + '/shoes/vans.jpg'} width='85%' height='70%'/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-4">
+            <img src={process.env.PUBLIC_URL + '/shoes/nb530.jpg'} width='85%' height='70%'/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src={process.env.PUBLIC_URL + '/shoes/mmds.jpg'} width='85%' height='70%'/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src={process.env.PUBLIC_URL + '/shoes/converse.jpg'} width='85%' height='70%'/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-4">
+            <img src={process.env.PUBLIC_URL + '/shoes/adidas.jpg'} width='85%' height='70%'/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src={process.env.PUBLIC_URL + '/shoes/nike.jpg'} width='85%' height='70%'/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src={process.env.PUBLIC_URL + '/shoes/nike.jpg'} width='85%' height='70%'/>
             <h4>상품명</h4>
             <p>상품설명</p>
           </div>
