@@ -1,9 +1,15 @@
 /*eslint-disable*/
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
+import { useState } from 'react';
 import bgImg from './img/bg.png';
+import data from './data';
+import Product from './Product';
 
 function App() {
+
+  const [shoes, setShoes] = useState(data);
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -16,19 +22,16 @@ function App() {
         </Container>
       </Navbar>
 
-      {/* 배너 이미지 */}
+      {/* 배너 */}
       <div className="main-bg" style={{backgroundImage : 'url('+bgImg+')'}}></div>
-      {/* 원본링크로 삽입하는 방식 */}
+      {/* 이미지 원본 링크로 삽입하는 방식 */}
       {/* <div className="main-bg" style={{backgroundImage : 'url("https://img.freepik.com/free-vector/banner-with-a-pair-of-realistic-black-sneakers-with-shadow-and-text_548887-94.jpg?w=1800&t=st=1678982266~exp=1678982866~hmac=bdda604f4a26be8ee73498fa077981fa7187483502bdf6a0a9dac0ecdffd97a2")'}}></div> */}
 
-      {/* 상품 */}
+      {/* 상품 리스트*/}
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product1.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
+          <Product seq = {0} data = {shoes} />
+
           <div className="col-md-4">
             <img src={process.env.PUBLIC_URL + '/shoes/product2.png'} width='85%' height='70%'/>
             <h4>상품명</h4>
