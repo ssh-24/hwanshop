@@ -1,18 +1,20 @@
 /*eslint-disable*/
 // 상품 컴포넌트
 const Product = (props) => {
-    let formatPrice = "₩ "+ addComma(props.data[props.seq].price+"");
+    let formatPrice = "₩ "+ addComma(props.data.price+"");
 
     return (
         <>
             <div className="col-md-4" id="prd-container">
                 <img src={process.env.PUBLIC_URL + "/shoes/product"+(props.seq+1)+".png"} alt="product" id="prd-img"/>
-                <h5 id="prd-title">{props.data[props.seq].title}</h5>
+                <h5 id="prd-title">{props.data.title}</h5>
                 <p id="prd-price">{formatPrice}</p>
             </div>
         </>
     )
 }
+
+
 
 // 숫자값에 세자리 콤마(,) 추가하는 메서드 
 const addComma = (value, defaultStr = '') => {
@@ -33,5 +35,6 @@ const addComma = (value, defaultStr = '') => {
     let result = integer; // 정수값만을 반환
     return result ;
 }
+
 
 export default Product;

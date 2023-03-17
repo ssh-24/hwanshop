@@ -32,7 +32,7 @@ function App() {
         <div className="row">
           {
             shoes.map((a,i) => {
-              return (<Product key = {i} seq = {i} data = {shoes}/>)
+              return (<Product key = {i} seq = {i} data = {a}/>)
             })
           }
         </div>
