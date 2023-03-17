@@ -30,72 +30,11 @@ function App() {
       {/* 상품 리스트*/}
       <div className="container">
         <div className="row">
-          <Product seq = {0} data = {shoes} />
-
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product2.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product3.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product4.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product5.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product6.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product7.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product8.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product9.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product10.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product11.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + '/shoes/product12.png'} width='85%' height='70%'/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
+          {
+            shoes.map((a,i) => {
+              return (<Product key = {i} seq = {i} data = {shoes}/>)
+            })
+          }
         </div>
       </div> 
     </div>

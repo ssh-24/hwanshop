@@ -1,3 +1,4 @@
+/* 웹 폰트 */
 @font-face {
   font-family: 'Pretendard-Regular';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -10,6 +11,22 @@
   /* background-image: url('./img/bg.png'); */
   background-size: cover;
   background-position: center;
+}
+
+#prd-container {
+  padding: 0px 12px 12px;
+}
+
+#prd-img {
+  width: 85%;
+  height: 70%;
+  background: rgb(252, 252, 252);
+  border-radius: 5%;
+  margin: 2%;
+}
+
+#prd-title {
+  padding: 10px;
 }
 
 .App {
