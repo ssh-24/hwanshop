@@ -1,18 +1,29 @@
 /*eslint-disable*/
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // 상품 컴포넌트
 const Product = (props) => {
+    // 페이지 이동 함수
+    let navigate = useNavigate();
+
     let formatPrice = "₩ "+ addComma(props.data.price+"");
-    let seq = props.data.id + 1; //얘를 어떻게 Detail로 넘기지??
+    let seq = props.data.id; //얘를 어떻게 Detail로 넘기지?? => URL 파라미터
 
     return (
         <>
             <div className="col-md-4" id="prd-container">
-                <img src={process.env.PUBLIC_URL + "/shoes/product"+(props.seq+1)+".png"} alt="product" id="prd-img"/>
-                <Link to="/detail">상세페이지</Link>
-                <h5 id="prd-title">{props.data.title}</h5>
+                <img src={process.env.PUBLIC_URL + "/shoes/product"+(props.seq+1)+".png"} alt="product" id="prd-img" 
+                    onClick={()=>{
+                        // 클릭 시 상세페이지
+                        navigate('/detail/'+seq)
+                }}/>
+                <h5 id="prd-title"
+                    onClick={()=>{
+                        // 클릭 시 상세페이지
+                        navigate('/detail/'+seq)
+                }}>{props.data.title}</h5>
                 <p id="prd-price">{formatPrice}</p>
+                {/* <button onClick={()=>{ navigate('/cart') }}>임시 기능 버튼</button> */}
             </div>
         </>
     )

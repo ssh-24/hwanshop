@@ -5,12 +5,14 @@ import { useState } from 'react';
 import bgImg from './img/bg.png';
 import data from './data';
 import Product from './Product';
-import Detail from './Detail';
-import { Routes, Route, Link } from 'react-router-dom';
+import Detail from './pages/Detail';
+import About from './pages/About';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 
 function App() {
 
   const [shoes, setShoes] = useState(data);
+  let navigate = useNavigate(); // 페이지 이동 함수
 
   return (
     <div className="App">
@@ -18,8 +20,9 @@ function App() {
         <Container>
           <Navbar.Brand href="/">HwanShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/detail">Cart</Nav.Link>
+            <Nav.Link onClick={()=> navigate("/")}>Home</Nav.Link>
+            <Nav.Link onClick={()=> navigate("/cart")}>Cart</Nav.Link>
+            <Nav.Link onClick={()=> navigate("/about")}>About</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -31,26 +34,37 @@ function App() {
 
       <Routes>
             <Route path="/" element={
-              <>
-                {/* 상품 리스트 (메인 페이지일 때만 보여주기)*/}
-                <div className="container">
-                  <div className="row">
-                    {
-                      shoes.map((a,i) => {
-                        return (<Product key = {i} seq = {i} data = {a}/>)
-                      })
-                    }
+                <>
+                  {/* 상품 리스트 (메인 페이지일 때만 보여주기)*/}
+                  <div className="container">
+                    <div className="row">
+                      {
+                        shoes.map((a,i) => {
+                          return (<Product key = {i} seq = {i} data = {a}/>)
+                        })
+                      }
+                    </div>
                   </div>
-                </div>
-              </>
-            } />
-            <Route path="/detail" element={
-              <>
-                <Detail seq={2}/>
-              </>
-            } />
-      </Routes>
+                </>
+            }/>
+            {/* 상세 페이지 */}
+            <Route path="/detail/:seq" element={
+              <Detail shoes={shoes}/>
+            }/>
 
+            {/* nested routes */}
+            <Route path="/about" element={<About/>}>
+              <Route path='contact' element={<div>연락처</div>}/>
+              <Route path='location' element={<div>위치</div>}/>
+            </Route>
+
+            {/* Routes안에 명시되지 않은 페이지 주소 예외처리 */}
+            <Route path="*" element={<>
+              <h1>404 Not Found</h1>
+              <img src=''></img>
+            </>}/>
+      </Routes>
+ 
 
 
     </div>

@@ -29,6 +29,16 @@
   padding: 10px;
 }
 
+#prd-img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+#prd-title:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .App {
   text-align: center;
   /* 이쁜 글씨 */
