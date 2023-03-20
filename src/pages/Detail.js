@@ -1,8 +1,20 @@
 /*eslint-disable*/
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // 상품 상세 컴포넌트
 const Detail = (props) => {
+    useEffect(() => {
+        // mount, update 시 여기 코드 실행,
+        // 복잡한 로직, 서버 데이터 호출 작업, 타이머 등의 코드를 작성
+        setTimeout(() => {
+            setDeliveryfree(false);
+        }, 2000);
+    }, [])
+    
+    // 무료배송 state
+    let [deliveryfree, setDeliveryfree] = useState(true);
+
     // URL 파라미터에 입력한 값이 남음
     let {seq} = useParams(); // 값이 String인 것 주의..
 
@@ -14,6 +26,14 @@ const Detail = (props) => {
     return (
         <>
             <div className="container">
+                {/* alert 모달 */}
+                {
+                    deliveryfree == true ? 
+                    <div className="alert alert-warning mt-2">
+                        2초 이내 구매 시 배송비 무료
+                    </div>
+                     : null
+                }
                 <div className="row">
                     <div className="col-md-6">
                         <img src={process.env.PUBLIC_URL + "/shoes/product"+(Number(seq)+1)+".png"} width="100%" />
