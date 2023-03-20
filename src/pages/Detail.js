@@ -4,6 +4,12 @@ import { useParams } from "react-router-dom";
 
 // 상품 상세 컴포넌트
 const Detail = (props) => {
+    // 수량 state
+    let [eaCount, setEaCount] = useState('')
+
+    // 무료배송 state
+    let [deliveryfree, setDeliveryfree] = useState(true);
+
     useEffect(() => {
         // mount, update 시 여기 코드 실행,
         // 복잡한 로직, 서버 데이터 호출 작업, 타이머 등의 코드를 작성
@@ -11,9 +17,13 @@ const Detail = (props) => {
             setDeliveryfree(false);
         }, 2000);
     }, [])
+
+    useEffect(() => {
+        if (isNaN(eaCount) == true) {
+            alert("숫자만 입력해주세요")
+        }
+    }, [eaCount]);
     
-    // 무료배송 state
-    let [deliveryfree, setDeliveryfree] = useState(true);
 
     // URL 파라미터에 입력한 값이 남음
     let {seq} = useParams(); // 값이 String인 것 주의..
@@ -34,6 +44,7 @@ const Detail = (props) => {
                     </div>
                      : null
                 }
+
                 <div className="row">
                     <div className="col-md-6">
                         <img src={process.env.PUBLIC_URL + "/shoes/product"+(Number(seq)+1)+".png"} width="100%" />
@@ -42,7 +53,8 @@ const Detail = (props) => {
                         <h4 className="pt-5">{prd.title}</h4>
                         <p id="detail-content">{prd.content}</p>
                         <p id="detail-price">{formatPrice}</p>
-                        <button className="btn btn-danger">주문하기</button> 
+                        <input id="ea-input" onChange={(e)=>{ setEaCount(e.target.value) }}/>
+                        <button className="btn btn-danger">Order</button>
                     </div>
                 </div>
             </div> 
