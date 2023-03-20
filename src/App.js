@@ -7,7 +7,9 @@ import data from './data';
 import Product from './Product';
 import Detail from './pages/Detail';
 import About from './pages/About';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import Info from './pages/Info';
+import Contact from './pages/Contact';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
 
@@ -22,7 +24,7 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={()=> navigate("/")}>Home</Nav.Link>
             <Nav.Link onClick={()=> navigate("/cart")}>Cart</Nav.Link>
-            <Nav.Link onClick={()=> navigate("/about")}>About</Nav.Link>
+            <Nav.Link onClick={()=> navigate("/about/info")}>About</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -54,14 +56,14 @@ function App() {
 
             {/* nested routes */}
             <Route path="/about" element={<About/>}>
-              <Route path='contact' element={<div>연락처</div>}/>
-              <Route path='location' element={<div>위치</div>}/>
+              <Route path='contact' element={<Contact></Contact>}/>
+              <Route path='info' element={<Info></Info>}/>
             </Route>
 
             {/* Routes안에 명시되지 않은 페이지 주소 예외처리 */}
             <Route path="*" element={<>
-              <h1>404 Not Found</h1>
-              <img src=''></img>
+              <h1 id='error-header'>404 Not Found</h1>
+              <img width='15%' alt='Not Found' src='https://cdn-icons-png.flaticon.com/512/1102/1102029.png?w=826&t=st=1679291144~exp=1679291744~hmac=d365fae0bd25b8f4aebf963e3ac2f5d9a38e7bddcca77c9880fe2d9676f86ce8'></img>
             </>}/>
       </Routes>
  

@@ -39,6 +39,40 @@
   cursor: pointer;
 }
 
+#detail-content {
+  text-align: left;
+  border-top: 1px solid #15171b1a;
+  border-bottom: 1px solid #15171b1a;
+  padding: 10px;
+  padding-top: 16px;
+}
+
+#detail-price {
+  margin-bottom: 18px;
+}
+
+.about-area {
+  margin: 18px;
+  padding: 10px;
+}
+
+#contact-header {
+  margin-bottom: 22px;
+}
+
+#info-header {
+  margin-bottom: 22px;
+}
+
+#info-footer {
+  margin-top: 18px;
+}
+
+#error-header {
+  margin: 12px;
+  padding: 10px;
+}
+
 .App {
   text-align: center;
   /* 이쁜 글씨 */
