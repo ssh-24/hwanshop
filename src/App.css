@@ -11,6 +11,7 @@
   /* background-image: url('./img/bg.png'); */
   background-size: cover;
   background-position: center;
+  border-bottom: 1px solid #4a4a4a3c;
 }
 
 #prd-container {
@@ -71,6 +72,10 @@
 #error-header {
   margin: 12px;
   padding: 10px;
+}
+
+#empty-area {
+  height: 50px;
 }
 
 .App {

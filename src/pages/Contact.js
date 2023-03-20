@@ -3,10 +3,11 @@ const Contact = () => {
     return (
         <>
             <div className="info-area">
+                <div id="empty-area"/>
                 <h1 id="contact-header">Contact</h1>
-                <img width='80%' alt="contact" src="https://img.freepik.com/premium-photo/contact-methods-closeup-of-a-phone-email-and-post-icons-leaning-on-gra-wall_157125-14795.jpg?w=1060" />
+                <div id="empty-area"/>
                 <div className='about-area'>
-                    <p>☎ 010 - 1234 - 5678</p>
+                    <p>☎ +82 10 - 5364 - 7902</p>
                     <p>✉ sonsh5364@gmail.com</p>
                 </div>
             </div>

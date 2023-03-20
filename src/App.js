@@ -2,7 +2,6 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import { useState } from 'react';
-import bgImg from './img/bg.png';
 import data from './data';
 import Product from './Product';
 import Detail from './pages/Detail';
@@ -30,10 +29,8 @@ function App() {
       </Navbar>
 
       {/* 배너 */}
-      <div className="main-bg" style={{backgroundImage : 'url('+bgImg+')'}}></div>
-      {/* 이미지 원본 링크로 삽입하는 방식 */}
-      {/* <div className="main-bg" style={{backgroundImage : 'url("https://img.freepik.com/free-vector/banner-with-a-pair-of-realistic-black-sneakers-with-shadow-and-text_548887-94.jpg?w=1800&t=st=1678982266~exp=1678982866~hmac=bdda604f4a26be8ee73498fa077981fa7187483502bdf6a0a9dac0ecdffd97a2")'}}></div> */}
-
+      <div className="main-bg" style={{backgroundImage : 'url('+process.env.PUBLIC_URL + "/banner.png"+')'}}></div>
+      
       <Routes>
             <Route path="/" element={
                 <>
