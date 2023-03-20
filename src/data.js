@@ -3,84 +3,84 @@ let data = [
     {
         id : 0,
         title : "Nike Air Force 1 '07 Low White",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 119000
     },
 
     {
         id : 1,
         title : "New Balance 993 Made in USA Grey",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 305000
     },
 
     {
         id : 2,
         title : "New Balance 992 Made in USA Navy",
-        content : "Born in the Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 695000
     },
 
     {
         id : 3,
         title : "Jordan 1 x Travis Scott x Fragment Retro Low OG SP Military Blue",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 1650000
     },
 
     {
         id : 4,
         title : "Asics Gel-Kayano 14 White Midnight",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 225000
     },
 
     {
         id : 5,
         title : "Adidas Gazelle Bold Core Black Cloud White",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 179000
     },
 
     {
         id : 6,
         title : "Nike Air Force 1 '07 Low Triple Black",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 140000
     },
 
     {
         id : 7,
         title : "Jordan 1 Retro High OG Chicago 2022",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 500000
     },
 
     {
         id : 8,
         title : "Nike Dunk Low Retro Grey Fog",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 132000
     },
 
     {
         id : 9,
         title : "New Balance 574 Legacy Navy",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 199000
     },
 
     {
         id : 10,
         title : "New Balance x Stone Island 574 Legacy Green",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 599000
     },
 
     {
         id : 11,
         title : "Nike Air Force 1 '07 WB Flax",
-        content : "Born in Seoul",
+        content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac nibh sit amet felis tincidunt tempor. Sed et mi eu velit cursus fringilla id quis purus. Maecenas imperdiet, risus a malesuada malesuada, purus arcu molestie massa, nec finibus tortor augue eu nisl. Integer sit amet malesuada justo. Nulla vel mattis enim. Sed pulvinar neque et massa porta feugiat. Nulla eu sapien id mauris blandit iaculis. Nulla posuere sed arcu id imperdiet. \n Quisque in tempor nisi. Cras lobortis sit amet leo sit amet maximus. Praesent eu imperdiet metus. Suspendisse laoreet imperdiet ligula, id ullamcorper sapien imperdiet non. Vivamus commodo commodo est at interdum. Sed tortor ex, condimentum ut feugiat ut, porta sed odio. Nunc lorem nisl, convallis quis luctus non, tempor molestie lorem.",
         price : 152000
     }
 ]
