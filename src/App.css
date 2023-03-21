@@ -78,8 +78,9 @@
   height: 50px;
 }
 
-#ea-input {
+#amount-input {
   margin-right: 10px;
+  border-radius: 5px;
 }
 
 .App {

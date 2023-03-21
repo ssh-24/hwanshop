@@ -4,34 +4,56 @@ import { useParams } from "react-router-dom";
 
 // 상품 상세 컴포넌트
 const Detail = (props) => {
-    // 수량 state
-    let [eaCount, setEaCount] = useState('')
-
-    // 무료배송 state
-    let [deliveryfree, setDeliveryfree] = useState(true);
-
-    useEffect(() => {
-        // mount, update 시 여기 코드 실행,
-        // 복잡한 로직, 서버 데이터 호출 작업, 타이머 등의 코드를 작성
-        setTimeout(() => {
-            setDeliveryfree(false);
-        }, 2000);
-    }, [])
-
-    useEffect(() => {
-        if (isNaN(eaCount) == true) {
-            alert("숫자만 입력해주세요")
-        }
-    }, [eaCount]);
-    
-
     // URL 파라미터에 입력한 값이 남음
     let {seq} = useParams(); // 값이 String인 것 주의..
+    
+    // 무료배송여부 state
+    let [deliveryfree, setDeliveryfree] = useState(true);
+    // 수량입력 state
+    let [inputval, setInputval] = useState('');
+    // 구매수량 state
+    let [amount, setAmount] = useState(0);
 
+    
     // 원본 state가 바뀔 수 도 있으니까
     // seq와 id가 같은 상품 찾기
     let prd = props.shoes.find((x) => x.id == seq);
     let formatPrice = "₩ "+ addComma(prd.price+"");
+
+
+    // 주문버튼 method
+    const order = () => {
+        let order_amount = Number(inputval);
+
+        // if (order_amount === 0) {
+        //     return false;
+        // }
+        console.log("주문 수량(inputval): ",order_amount);
+
+        setAmount(order_amount); // 좀 늦게 돌 수 있다. 근데 왜 안들어가??
+        setInputval('');
+
+        console.log("주문 수량(amount): ",amount);
+    }
+
+
+    // [useEffect] 복잡한 로직, 서버 데이터 호출 작업, 타이머 등의 코드를 작성
+    useEffect(() => {
+        let a = setTimeout(() => {
+            setDeliveryfree(false)
+        }, 2000);
+
+        return () => {
+            clearTimeout(a)
+        }
+    }, []) // []로 작성 시 초기 mount 시에만 동작
+
+    useEffect(() => {
+        if (isNaN(inputval) == true) {
+            alert("Please enter only numbers")
+            setInputval('');
+        }
+    }, [inputval]);
     
     return (
         <>
@@ -40,7 +62,7 @@ const Detail = (props) => {
                 {
                     deliveryfree == true ? 
                     <div className="alert alert-warning mt-2">
-                        2초 이내 구매 시 배송비 무료
+                        Free shipping for purchases within 2 seconds ☺
                     </div>
                      : null
                 }
@@ -53,8 +75,8 @@ const Detail = (props) => {
                         <h4 className="pt-5">{prd.title}</h4>
                         <p id="detail-content">{prd.content}</p>
                         <p id="detail-price">{formatPrice}</p>
-                        <input id="ea-input" onChange={(e)=>{ setEaCount(e.target.value) }}/>
-                        <button className="btn btn-danger">Order</button>
+                        <input placeholder="amount" id="amount-input" onChange={(e)=>setInputval(e.target.value)} value={inputval}/>
+                        <button className="btn btn-danger" onClick={order}>Order</button>
                     </div>
                 </div>
             </div> 
