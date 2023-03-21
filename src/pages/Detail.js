@@ -25,15 +25,13 @@ const Detail = (props) => {
     const order = () => {
         let order_amount = Number(inputval);
 
-        // if (order_amount === 0) {
-        //     return false;
-        // }
-        console.log("주문 수량(inputval): ",order_amount);
-
-        setAmount(order_amount); // 좀 늦게 돌 수 있다. 근데 왜 안들어가??
-        setInputval('');
-
-        console.log("주문 수량(amount): ",amount);
+        // 0이 아닌 숫자일 때만 실행
+        if (order_amount !== 0) {
+            console.log("주문 수량(inputval): ",order_amount);
+            
+            setAmount(order_amount); // 여기서 amount 찍어보면 이전 값이 나옴, 렌더가 호출될 때 정의된 state값으로 고정되기 때문
+            setInputval('');
+        }
     }
 
 
@@ -48,6 +46,18 @@ const Detail = (props) => {
         }
     }, []) // []로 작성 시 초기 mount 시에만 동작
 
+
+    useEffect(() => {
+        // 주문 들어가는 로직 넣으면 될 듯
+        if (amount > 0) {
+            console.log("주문 수량(amount): ",amount);
+            alert(`${amount} Order completed`);
+
+            
+        }
+    },[amount])
+
+
     useEffect(() => {
         if (isNaN(inputval) == true) {
             alert("Please enter only numbers")
@@ -55,6 +65,7 @@ const Detail = (props) => {
         }
     }, [inputval]);
     
+
     return (
         <>
             <div className="container">
