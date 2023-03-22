@@ -9,6 +9,7 @@ import About from './pages/About';
 import Info from './pages/Info';
 import Contact from './pages/Contact';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
 
@@ -44,6 +45,12 @@ function App() {
                       }
                     </div>
                   </div>
+                  {/* 더보기 버튼 (AJAX 요청) */}
+                  <button className="btn btn-primary" onClick={()=> {
+                    axios.get('https://codingapple1.github.io/shop/data2.json')
+                    .then((result) => { console.log(result.data) })
+                    .catch(()=> { console.log('REQUEST FAIL') })
+                  }}>More</button>
                 </>
             }/>
             {/* 상세 페이지 */}
