@@ -47,7 +47,7 @@ function App() {
                   </div>
                   {/* 더보기 버튼 (AJAX 요청) */}
                   <button className="btn btn-primary" onClick={()=> {
-                    axios.get('https://github.com/ssh-24/My-JSON-Server/db.json')
+                    axios.get('https://my-json-server.typicode.com/ssh-24/My-JSON-Server/db')
                     .then((result) => { console.log(result.data) })
                     .catch(()=> { console.log('REQUEST FAIL') })
                   }}>More</button>
