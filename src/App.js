@@ -1,8 +1,9 @@
 /*eslint-disable*/
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
-import { useState } from 'react';
-import data from './data';
+import { useEffect, useState } from 'react';
+// import data from './data';
+import data from './data_init';
 import Product from './Product';
 import Detail from './pages/Detail';
 import About from './pages/About';
@@ -14,7 +15,19 @@ import axios from 'axios';
 function App() {
 
   const [shoes, setShoes] = useState(data);
+  const [loading, setLoading] = useState(false);
+  const [noMoreData, setNoMoreData] = useState(false);
+  const [count, setCount] = useState(1);
+
   let navigate = useNavigate(); // 페이지 이동 함수
+
+
+  useEffect(()=>{
+    if (count>=3) {
+      setNoMoreData(true)
+    }
+  },[count])
+
 
   return (
     <div className="App">
@@ -44,27 +57,54 @@ function App() {
                         })
                       }
                     </div>
-                  </div>
-                  {/* 더보기 버튼 (AJAX 요청) */}
-                  <button className="btn btn-primary mt-3 mb-2" onClick={()=> {
-                    axios.get('https://my-json-server.typicode.com/ssh-24/My-JSON-Server/db')
-                    .then((result) => {
-                      let temp = [...shoes];
-                      let rcvData = [...result.data.shoes]
-                      rcvData.map((element)=> temp.push(element))
-                      
-                      console.log("기존 state", shoes)
-                      console.log("받아온 데이터", rcvData)
-                      console.log("결과", temp)
-                      console.log("================")
 
-                      //state 변경
-                      setShoes(temp)
-                    })
-                    .catch(()=> { console.log('REQUEST FAIL') })
-                  }}>More</button>
+                    {/* 로딩중 모달 */}
+                    {
+                        loading == true ? 
+                        <div className="alert alert-info mt-2">
+                            Getting data...
+                        </div>
+                        : null
+                    }
+                  </div>
+
+                  {/* 더보기 버튼 */}
+                  {
+                    noMoreData == false ?
+                    <>
+                      <button className="btn btn-primary mt-3 mb-2" onClick={()=> {
+                        setLoading(true)
+
+                        // AJAX 요청
+                        axios.get('https://my-json-server.typicode.com/ssh-24/My-JSON-Server/db')
+                        .then((result) => {
+                          let temp;
+                          let rcvData;
+                          if (count === 1) { rcvData = [...result.data.shoes1]}
+                          if (count === 2) { rcvData = [...result.data.shoes2]}
+                          temp = [...shoes, ...rcvData]
+
+                          console.log("기존 state", shoes)
+                          console.log("받아온 데이터", rcvData)
+                          console.log("결과", temp)
+                          console.log("================")
+
+                          //state 변경
+                          setShoes(temp)
+                          setLoading(false)
+                          setCount(count+1) //버튼 카운트 증가
+                        })
+                        .catch(()=> {
+                          setLoading(false)
+                          console.log('REQUEST FAIL')
+                        })
+                      }}>More</button>
+                    </>
+                    : null
+                  }
                 </>
             }/>
+
             {/* 상세 페이지 */}
             <Route path="/detail/:seq" element={
               <Detail shoes={shoes}/>
