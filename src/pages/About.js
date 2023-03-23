@@ -13,6 +13,11 @@ let Btn = styled.button`
     border-radius : 5px;
     border : 0px;
     width : 40%;
+    &:hover {
+        background: #003480e3;
+        color: white;
+        transition: 0.3s;
+      }
 `
 
 // 쇼핑몰 정보 페이지
