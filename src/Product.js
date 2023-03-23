@@ -23,7 +23,6 @@ const Product = (props) => {
                         navigate('/detail/'+seq)
                 }}>{props.data.title}</h5>
                 <p id="prd-price">{formatPrice}</p>
-                {/* <button onClick={()=>{ navigate('/cart') }}>임시 기능 버튼</button> */}
             </div>
         </>
     )

@@ -1,5 +1,5 @@
 // 정보소개 페이지
-const Info = (props) => {
+const Info = () => {
     return (
         <>
             <div className="info-area">

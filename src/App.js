@@ -40,15 +40,27 @@ function App() {
                     <div className="row">
                       {
                         shoes.map((a,i) => {
-                          return (<Product key = {i} seq = {i} data = {a}/>)
+                          return (<Product key = {i} seq = {Number(a.id)} data = {a}/>)
                         })
                       }
                     </div>
                   </div>
                   {/* 더보기 버튼 (AJAX 요청) */}
-                  <button className="btn btn-primary" onClick={()=> {
+                  <button className="btn btn-primary mt-3 mb-2" onClick={()=> {
                     axios.get('https://my-json-server.typicode.com/ssh-24/My-JSON-Server/db')
-                    .then((result) => { console.log(result.data) })
+                    .then((result) => {
+                      let temp = [...shoes];
+                      let rcvData = [...result.data.shoes]
+                      rcvData.map((element)=> temp.push(element))
+                      
+                      console.log("기존 state", shoes)
+                      console.log("받아온 데이터", rcvData)
+                      console.log("결과", temp)
+                      console.log("================")
+
+                      //state 변경
+                      setShoes(temp)
+                    })
                     .catch(()=> { console.log('REQUEST FAIL') })
                   }}>More</button>
                 </>
