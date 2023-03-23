@@ -33,11 +33,15 @@
 #prd-img:hover {
   opacity: 0.8;
   cursor: pointer;
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+  transition: 0.3s;
 }
 
 #prd-title:hover {
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 #detail-content {
