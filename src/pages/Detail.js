@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Nav } from 'react-bootstrap';
 
 // 상품 상세 컴포넌트
 const Detail = (props) => {
@@ -13,6 +14,8 @@ const Detail = (props) => {
     let [inputval, setInputval] = useState('');
     // 구매수량 state
     let [amount, setAmount] = useState(0);
+    // 탭 state
+    let [tab, setTab] = useState(0);
 
     
     // 원본 state가 바뀔 수 도 있으니까
@@ -90,9 +93,41 @@ const Detail = (props) => {
                         <button className="btn btn-danger" onClick={order}>Order</button>
                     </div>
                 </div>
+
+                {/* 탭 UI */}
+                <Nav variant="tabs"  defaultActiveKey="link0">
+                    <Nav.Item>
+                        <Nav.Link onClick={()=>{setTab(0)}} eventKey="link0">Style</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link onClick={()=>{setTab(1)}} eventKey="link1">Review</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link onClick={()=>{setTab(2)}} eventKey="link2">Other Products</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+                <TabComponent tab = {tab}/>
+
             </div> 
         </>
     )
+}
+
+// TAB 전환 시 분기처리, if문 여러 개 쓰는 방식
+const TabComponent = (props) => {
+    if (props.tab === 0) {
+        return (
+            <div>스타일</div>
+        )
+    } else if (props.tab === 1) {
+        return (
+            <div>후기</div>  
+        )
+    } else if (props.tab === 2) {
+        return (
+            <div>다른 상품들</div>
+        )
+    }
 }
 
 
