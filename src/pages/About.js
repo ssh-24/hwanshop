@@ -2,6 +2,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 // styled-components 사용
 let Btn = styled.button`
@@ -24,15 +25,26 @@ let Btn = styled.button`
 const About = (props) => {
     let navigate = useNavigate();
 
+    let [fade, setFade] = useState('');
+    let [tab, setTab] = useState('');
+
+    // Tab 전환 애니메이션
+    useEffect(()=>{
+        let a = setTimeout(() => {setFade('transition-end')},50)
+        return () => {
+            clearTimeout(a)
+            setFade('')
+        }
+    },[tab])
+
     return (
         <>
-            {/* <h1>Info</h1> */}
             <div className='about-area'>
-                <Btn bg={"#1F2326"} onClick={()=> navigate('/about/info')}>Info</Btn>
-                <Btn bg={"#1F2326"} onClick={()=> navigate('/about/contact')}>Contact</Btn>
+                <Btn bg={"#1F2326"} onClick={()=> { setTab(0); navigate('/about/info')}}>Info</Btn>
+                <Btn bg={"#1F2326"} onClick={()=> { setTab(1); navigate('/about/contact')}}>Contact</Btn>
             </div>
             {/* Outlet 위치에 하위 컴포넌트(페이지) 보임 */}
-            <div className='about-area'>
+            <div className={`about-area transition-start ${fade}`}>
                 <Outlet></Outlet>
             </div>
         </>

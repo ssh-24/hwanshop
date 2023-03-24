@@ -87,6 +87,15 @@
   border-radius: 5px;
 }
 
+.transition-start {
+  opacity: 0;
+}
+
+.transition-end {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
 .App {
   text-align: center;
   /* 이쁜 글씨 */

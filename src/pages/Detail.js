@@ -16,7 +16,8 @@ const Detail = (props) => {
     let [amount, setAmount] = useState(0);
     // 탭 state
     let [tab, setTab] = useState(0);
-
+    // Animation Style State
+    let [fade, setFade] = useState('');
     
     // 원본 state가 바뀔 수 도 있으니까
     // seq와 id가 같은 상품 찾기
@@ -43,9 +44,13 @@ const Detail = (props) => {
         let a = setTimeout(() => {
             setDeliveryfree(false)
         }, 2000);
-
+        // 초기 호출 애니메이션
+        let b = setTimeout(() => {setFade('transition-end')},50)
+        // cleanUp Func
         return () => {
             clearTimeout(a)
+            clearTimeout(b)
+            setFade('')
         }
     }, []) // []로 작성 시 초기 mount 시에만 동작
 
@@ -71,7 +76,7 @@ const Detail = (props) => {
 
     return (
         <>
-            <div className="container">
+            <div className={`container transition-start ${fade}`}>
                 {/* alert 모달 */}
                 {
                     deliveryfree == true ? 
@@ -81,7 +86,7 @@ const Detail = (props) => {
                      : null
                 }
 
-                <div className="row">
+                <div className='row'>
                     <div className="col-md-6">
                         <img src={process.env.PUBLIC_URL + "/shoes/product"+(Number(seq)+1)+".png"} width="100%" />
                     </div>
@@ -95,15 +100,15 @@ const Detail = (props) => {
                 </div>
 
                 {/* 탭 UI */}
-                <Nav variant="tabs"  defaultActiveKey="link0">
+                <Nav variant="tabs"  defaultActiveKey="style">
                     <Nav.Item>
-                        <Nav.Link onClick={()=>{setTab(0)}} eventKey="link0">Style</Nav.Link>
+                        <Nav.Link onClick={()=>{setTab(0)}} eventKey="style">Style</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link onClick={()=>{setTab(1)}} eventKey="link1">Review</Nav.Link>
+                        <Nav.Link onClick={()=>{setTab(1)}} eventKey="review">Review</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link onClick={()=>{setTab(2)}} eventKey="link2">Other Products</Nav.Link>
+                        <Nav.Link onClick={()=>{setTab(2)}} eventKey="other-products">Other Products</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 <TabComponent tab = {tab}/>
@@ -113,21 +118,25 @@ const Detail = (props) => {
     )
 }
 
-// TAB 전환 시 분기처리, if문 여러 개 쓰는 방식
-const TabComponent = (props) => {
-    if (props.tab === 0) {
-        return (
-            <div>스타일</div>
-        )
-    } else if (props.tab === 1) {
-        return (
-            <div>후기</div>  
-        )
-    } else if (props.tab === 2) {
-        return (
-            <div>다른 상품들</div>
-        )
-    }
+// TAB Component
+const TabComponent = ({tab}) => {
+    let [fade, setFade] = useState('');
+
+    // Tab 전환 애니메이션
+    useEffect(()=>{
+        // automatic batching 때문에 timer 줘야함
+        let a = setTimeout(()=>{setFade('transition-end')}, 50)
+        return ()=> {
+            clearTimeout(a)
+            setFade('')
+        }
+    }, [tab])
+
+    return (
+        <div className={`transition-start ${fade}`}>
+            { [<div>스타일</div>, <div>후기</div>, <div>다른 상품들</div>][tab] }
+        </div>
+    )
 }
 
 
