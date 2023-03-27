@@ -117,7 +117,7 @@ function App() {
               <Route path='info' element={<Info></Info>}/>
             </Route>
 
-            <Route path='/cart' element={<Cart/>}/>
+            <Route path="/cart" element={<Cart/>}/>
 
             {/* Routes안에 명시되지 않은 페이지 주소 예외처리 */}
             <Route path="*" element={<>
