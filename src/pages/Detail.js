@@ -45,7 +45,7 @@ const Detail = (props) => {
             setDeliveryfree(false)
         }, 2000);
         // 초기 호출 애니메이션
-        let b = setTimeout(() => {setFade('transition-end')},50)
+        let b = setTimeout(() => {setFade('transition-end')})
         // cleanUp Func
         return () => {
             clearTimeout(a)
@@ -125,7 +125,7 @@ const TabComponent = ({tab}) => {
     // Tab 전환 애니메이션
     useEffect(()=>{
         // automatic batching 때문에 timer 줘야함
-        let a = setTimeout(()=>{setFade('transition-end')}, 50)
+        let a = setTimeout(()=>{setFade('transition-end')}, 20)
         return ()=> {
             clearTimeout(a)
             setFade('')
