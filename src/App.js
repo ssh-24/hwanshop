@@ -9,6 +9,7 @@ import Detail from './pages/Detail';
 import About from './pages/About';
 import Info from './pages/Info';
 import Contact from './pages/Contact';
+import Cart from './pages/Cart';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -115,6 +116,8 @@ function App() {
               <Route path='contact' element={<Contact></Contact>}/>
               <Route path='info' element={<Info></Info>}/>
             </Route>
+
+            <Route path='/cart' element={<Cart/>}/>
 
             {/* Routes안에 명시되지 않은 페이지 주소 예외처리 */}
             <Route path="*" element={<>
