@@ -17,18 +17,22 @@ let cart = createSlice({
     ],
     reducers : {
         addCount(state, action) {
-            state[action.payload].count += 1
+            let num = state.findIndex((a)=>{ return a.id === action.payload }) // index를 남겨줌
+            state[num].count += 1
         },
         subCount(state, action) {
-            state[action.payload].count -= 1
+            let num = state.findIndex((a)=>{ return a.id === action.payload })
+            state[num].count -= 1
         },
         addCart(state, action) {
-            let newState = [...state]
-            newState.push(action.payload)
-            return newState
+            state.push(action.payload)
+        },
+        subCart(state, action) {
+            // 상품 id와 같지 않은 애들로만 state 변경 (== 삭제)
+            return state.filter(cart => cart.id !== action.payload)
         }
     }
 })
 
-export let { addCount, subCount, addCart } = cart.actions
+export let { addCount, subCount, addCart, subCart } = cart.actions
 export default cart

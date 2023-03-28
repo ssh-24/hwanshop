@@ -2,27 +2,34 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
+import { addCart } from "./../store/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 // 상품 상세 컴포넌트
 const Detail = (props) => {
     // URL 파라미터에 입력한 값이 남음
-    let {seq} = useParams(); // 값이 String인 것 주의..
+    let {seq} = useParams() // 값이 String인 것 주의..
     
     // 무료배송여부 state
-    let [deliveryfree, setDeliveryfree] = useState(true);
+    let [deliveryfree, setDeliveryfree] = useState(true)
     // 수량입력 state
-    let [inputval, setInputval] = useState('');
+    let [inputval, setInputval] = useState('')
     // 구매수량 state
-    let [amount, setAmount] = useState(0);
+    let [amount, setAmount] = useState(0)
     // 탭 state
-    let [tab, setTab] = useState(0);
+    let [tab, setTab] = useState(0)
     // Animation Style State
-    let [fade, setFade] = useState('');
+    let [fade, setFade] = useState('')
     
     // 원본 state가 바뀔 수 도 있으니까
     // seq와 id가 같은 상품 찾기
-    let prd = props.shoes.find((x) => x.id == seq);
-    let formatPrice = "₩ "+ addComma(prd.price+"");
+    let prd = props.shoes.find((x) => x.id == seq)
+    let formatPrice = "₩ "+ addComma(prd.price+"")
+
+    // Dispatch
+    let dispatch = useDispatch()
+    // From Redux Store
+    let stock = useSelector((state)=> state.stock)
 
 
     // 주문버튼 method
@@ -58,10 +65,24 @@ const Detail = (props) => {
     useEffect(() => {
         // 주문 들어가는 로직 넣으면 될 듯
         if (amount > 0) {
-            console.log("주문 수량(amount): ",amount);
-            alert(`${amount} Order completed`);
+            // 재고보다 많이 주문하거나, 재고 0이면 메세지 처리
+            if (amount > stock[prd.id].count || stock[prd.id].count <= 0) {
+                alert(`There is no stock left.`)
+                return;
+            }
+            console.log("주문 수량(amount): ",amount)
 
-            
+            dispatch(addCart(
+                {
+                    id : Number(prd.id),
+                    name : prd.title,
+                    count : amount
+                }
+            ))
+            // dispatch(subStock(prd.id))
+            // dispatch(addCount(prd.id)) //담은 개수  
+
+            alert(`${amount} Order completed`)
         }
     },[amount])
 
@@ -77,7 +98,7 @@ const Detail = (props) => {
     return (
         <>
             <div className={`container transition-start ${fade}`}>
-                {/* alert 모달 */}
+                {/* 무료배송 모달 */}
                 {
                     deliveryfree == true ? 
                     <div className="alert alert-warning mt-2">
