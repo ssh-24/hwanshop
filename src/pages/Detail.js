@@ -64,9 +64,9 @@ const Detail = (props) => {
 
 
     useEffect(() => {
-        // 주문 들어가는 로직 넣으면 될 듯
+        // 장바구니에 추가
         if (amount > 0) {
-            // 재고보다 많이 주문하거나, 재고 0이면 메세지 처리
+            // 재고 0 이거나, 재고보다 많이 주문시 메세지 처리
             if (stock[prd.id].count <= 0) {
                 alert(`There is no stock left`)
                 return;
@@ -86,7 +86,7 @@ const Detail = (props) => {
             ))
             dispatch(subStock({id : prd.id, count : amount}))
 
-            alert(`${amount} Order completed`)
+            alert(`${amount} Products Order completed`)
         }
     },[amount])
 
@@ -105,7 +105,7 @@ const Detail = (props) => {
                 {/* 무료배송 모달 */}
                 {
                     deliveryfree == true ? 
-                    <div className="alert alert-warning mt-2">
+                    <div className="alert alert-primary mt-2">
                         Free shipping for purchases within 2 seconds ☺
                     </div>
                      : null

@@ -41,7 +41,7 @@
 #prd-title:hover {
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 #detail-content {

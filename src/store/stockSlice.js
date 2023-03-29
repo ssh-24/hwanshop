@@ -77,8 +77,8 @@ let stock = createSlice({
     ],
     reducers : {
         addStock(state, action) {
-            let num = state.findIndex((a)=>{ return a.id === action.payload }) // index를 남겨줌
-            state[num].count += 1
+            let num = state.findIndex((a)=>{ return a.id === action.payload.id }) // index를 남겨줌
+            state[num].count += action.payload.count
         },
         subStock(state, action) {
             let num = state.findIndex((a)=>{ return a.id === action.payload.id }) // index를 남겨줌

@@ -24,6 +24,7 @@ const Cart = () => {
                     <th>Amount</th>
                     <th>Add</th>
                     <th>Sub</th>
+                    <th>Del</th>
                     </tr>
                 </thead>
                 {
@@ -45,7 +46,7 @@ const Cart = () => {
                                 dispatch(addCount(a.id))
                             }}>+</button></td>
                             <td width={'7%'}><button className='btn btn-danger pt-1 pb-1' onClick={()=>{
-                                dispatch(addStock(a.id))
+                                dispatch(addStock({id : a.id, count : 1}))
                                 dispatch(subCount(a.id))
 
                                 // 담은 상품 0이 될 때 메세지 처리, 장바구니 상품 삭제
@@ -54,6 +55,11 @@ const Cart = () => {
                                     dispatch(subItem({id : a.id}))
                                 }
                             }}>-</button></td>
+                            <td width={'7%'}><button className='btn pt-1 pb-1' onClick={()=>{
+                                alert("It will be deleted from your shopping cart.")
+                                dispatch(addStock({id : a.id, count : a.count}))
+                                dispatch(subItem({id : a.id}))
+                            }}>✖</button></td>
                             </tr>
                         </tbody>
                         )

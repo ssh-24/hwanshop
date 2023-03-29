@@ -62,7 +62,7 @@ function App() {
                     {/* 로딩중 모달 */}
                     {
                         loading == true ? 
-                        <div className="alert alert-info mt-2">
+                        <div className="alert alert-primary mt-2">
                             Getting data...
                         </div>
                         : null
