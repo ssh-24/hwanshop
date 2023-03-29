@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
-import { addCart } from "./../store/cartSlice";
+import { addCount, addItem } from "./../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { subStock } from "../store/stockSlice";
 
 // 상품 상세 컴포넌트
 const Detail = (props) => {
@@ -66,21 +67,24 @@ const Detail = (props) => {
         // 주문 들어가는 로직 넣으면 될 듯
         if (amount > 0) {
             // 재고보다 많이 주문하거나, 재고 0이면 메세지 처리
-            if (amount > stock[prd.id].count || stock[prd.id].count <= 0) {
-                alert(`There is no stock left.`)
+            if (stock[prd.id].count <= 0) {
+                alert(`There is no stock left`)
+                return;
+            }
+            if (amount > stock[prd.id].count) {
+                alert(`There is no stock left. only left ${stock[prd.id].count}`)
                 return;
             }
             console.log("주문 수량(amount): ",amount)
 
-            dispatch(addCart(
+            dispatch(addItem(
                 {
                     id : Number(prd.id),
                     name : prd.title,
                     count : amount
                 }
             ))
-            // dispatch(subStock(prd.id))
-            // dispatch(addCount(prd.id)) //담은 개수  
+            dispatch(subStock({id : prd.id, count : amount}))
 
             alert(`${amount} Order completed`)
         }
