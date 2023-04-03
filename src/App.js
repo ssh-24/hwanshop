@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useSelector } from "react-redux"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [noMoreData, setNoMoreData] = useState(false);
   const [count, setCount] = useState(1);
+  const watched = useSelector((state) => state.watched) // 최근본상품 state (redux store)
 
   let navigate = useNavigate(); // 페이지 이동 함수
 
@@ -28,6 +30,10 @@ function App() {
       localStorage.setItem('watched',JSON.stringify([]))
     }
   },[])
+
+  useEffect(()=>{
+    console.log("최근본상품 리스트", watched);
+  },[watched])
 
   useEffect(()=>{
     if (count>=3) {
@@ -52,6 +58,26 @@ function App() {
       {/* 배너 */}
       <div className="main-bg" style={{backgroundImage : 'url('+process.env.PUBLIC_URL + "/banner.png"+')'}}></div>
       
+      {/* 최근 본 상품 */}
+      <div className='recent-view-sidebar'>
+        <h5>Recent View</h5>
+        {
+          // 최근 본 상품이 있을 때만
+          localStorage.getItem('watched') != null ?
+          watched.map((a,i)=>{
+            return (
+            <div key={i}>
+              <img src={process.env.PUBLIC_URL + "/shoes/product"+(a+1)+".png"} alt="product" id="prd-img" 
+                onClick={()=>{
+                  // 상세 페이지로 이동
+                  navigate('/detail/'+a)
+                }}/>
+            </div>)
+          })
+          : null
+        }
+      </div>
+
       <Routes>
             <Route path="/" element={
                 <>
