@@ -96,6 +96,14 @@
   transition: opacity 0.5s;
 }
 
+.recent-view-sidebar {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  background-color: rgb(247, 247, 247);
+}
+
 .App {
   text-align: center;
   /* 이쁜 글씨 */
