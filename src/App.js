@@ -22,6 +22,12 @@ function App() {
 
   let navigate = useNavigate(); // 페이지 이동 함수
 
+  useEffect(()=>{
+    if (localStorage.getItem('watched') == null) {
+      // localStorage에 초기값 셋팅
+      localStorage.setItem('watched',JSON.stringify([]))
+    }
+  },[])
 
   useEffect(()=>{
     if (count>=3) {

@@ -14,12 +14,14 @@ const Product = (props) => {
             <div className="col-md-4" id="prd-container">
                 <img src={process.env.PUBLIC_URL + "/shoes/product"+(props.seq+1)+".png"} alt="product" id="prd-img" 
                     onClick={()=>{
-                        // 클릭 시 상세페이지
+                        addWatched(seq)
+                        // 상세 페이지로 이동
                         navigate('/detail/'+seq)
                 }}/>
                 <h5 id="prd-title"
                     onClick={()=>{
-                        // 클릭 시 상세페이지
+                        addWatched(seq)
+                        // 상세 페이지로 이동
                         navigate('/detail/'+seq)
                 }}>{props.data.title}</h5>
                 <p id="prd-price">{formatPrice}</p>
@@ -28,6 +30,14 @@ const Product = (props) => {
     )
 }
 
+
+// 최근 본 상품 localStorage에 추가 메서드
+const addWatched = (itemNum) => {
+    let watched = JSON.parse(localStorage.getItem('watched'))
+    watched.unshift(itemNum)
+    let uniqeWatched = new Set(watched) // 중복제거
+    localStorage.setItem('watched',JSON.stringify([...uniqeWatched]))
+}
 
 
 // 숫자값에 세자리 콤마(,) 추가하는 메서드 
