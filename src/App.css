@@ -97,11 +97,18 @@
 }
 
 .recent-view-sidebar {
+  position: fixed;
   display: block;
   justify-content: center;
   align-items: center;
-  width: 20%;
-  background-color: rgb(247, 247, 247);
+  border-radius: 15px;
+  padding: 5px;
+  right: 1%;
+  width: 10%;
+  transform: translate(0,5%);
+  background: #212529;
+  color: #FFFFFF;
+  z-index: 2;
 }
 
 .App {

@@ -1,10 +1,13 @@
 /*eslint-disable*/
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setWatched } from './store/watchedSlice';
+import { setIsHome } from './store/ishomeSlice';
 
 // 상품 컴포넌트
 const Product = (props) => {
+    const isHome = useSelector((state) => state.isHome) // 홈 화면인지 여부
+
     // 페이지 이동 함수
     let navigate = useNavigate()
 
@@ -22,6 +25,7 @@ const Product = (props) => {
                         dispatch(setWatched()) // state 최신화
                         // 상세 페이지로 이동
                         navigate('/detail/'+seq)
+                        dispatch(setIsHome(false))
                 }}/>
                 <h5 id="prd-title"
                     onClick={()=>{
@@ -29,6 +33,7 @@ const Product = (props) => {
                         dispatch(setWatched()) // state 최신화
                         // 상세 페이지로 이동
                         navigate('/detail/'+seq)
+                        dispatch(setIsHome(false))
                 }}>{props.data.title}</h5>
                 <p id="prd-price">{formatPrice}</p>
             </div>

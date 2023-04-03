@@ -3,6 +3,7 @@ import stock from './store/stockSlice'
 import cart from './store/cartSlice'
 import user from './store/userSlice'
 import watched from './store/watchedSlice'
+import isHome from './store/ishomeSlice'
 
 // 반드시 여기서 export 해줘야함
 export default configureStore({
@@ -10,6 +11,7 @@ export default configureStore({
         cart : cart.reducer,
         stock : stock.reducer,
         user : user.reducer,
-        watched : watched.reducer
+        watched : watched.reducer,
+        isHome : isHome.reducer
     }
 }) 

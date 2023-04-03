@@ -12,7 +12,8 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { setIsHome } from './store/ishomeSlice';
 
 function App() {
 
@@ -20,9 +21,12 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [noMoreData, setNoMoreData] = useState(false);
   const [count, setCount] = useState(1);
+  const isHome = useSelector((state) => state.isHome) // 홈 화면인지 여부
   const watched = useSelector((state) => state.watched) // 최근본상품 state (redux store)
 
-  let navigate = useNavigate(); // 페이지 이동 함수
+  let navigate = useNavigate() // 페이지 이동 함수
+
+  let dispatch = useDispatch()
 
   useEffect(()=>{
     if (localStorage.getItem('watched') == null) {
@@ -48,9 +52,9 @@ function App() {
         <Container>
           <Navbar.Brand href="/">HwanShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={()=> navigate("/")}>Home</Nav.Link>
-            <Nav.Link onClick={()=> navigate("/cart")}>Cart</Nav.Link>
-            <Nav.Link onClick={()=> navigate("/about/info")}>About</Nav.Link>
+            <Nav.Link onClick={()=> {dispatch(setIsHome(true)); navigate("/")}}>Home</Nav.Link>
+            <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/cart")}}>Cart</Nav.Link>
+            <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/about/info")}}>About</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -59,24 +63,30 @@ function App() {
       <div className="main-bg" style={{backgroundImage : 'url('+process.env.PUBLIC_URL + "/banner.png"+')'}}></div>
       
       {/* 최근 본 상품 */}
-      <div className='recent-view-sidebar'>
-        <h5>Recent View</h5>
-        {
-          // 최근 본 상품이 있을 때만
-          localStorage.getItem('watched') != null ?
-          watched.map((a,i)=>{
-            return (
-            <div key={i}>
-              <img src={process.env.PUBLIC_URL + "/shoes/product"+(a+1)+".png"} alt="product" id="prd-img" 
-                onClick={()=>{
-                  // 상세 페이지로 이동
-                  navigate('/detail/'+a)
-                }}/>
-            </div>)
-          })
-          : null
-        }
-      </div>
+      {
+        isHome ?
+        <div className='recent-view-sidebar'>
+          <div>Recent</div>
+          {
+            // 최근 본 상품이 있을 때만
+            localStorage.getItem('watched') != null ?
+            watched.map((a,i)=>{
+              return (
+              <div key={i}>
+                <img src={process.env.PUBLIC_URL + "/shoes/product"+(a+1)+".png"} alt="product" id="prd-img" 
+                  onClick={()=>{
+                    // 상세 페이지로 이동
+                    navigate('/detail/'+a)
+                    dispatch(setIsHome(false)) 
+                  }}/>
+              </div>)
+            })
+            : null
+          }
+        </div>
+        : null
+      }
+
 
       <Routes>
             <Route path="/" element={
