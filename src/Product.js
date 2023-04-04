@@ -22,7 +22,7 @@ const Product = (props) => {
                 <img src={process.env.PUBLIC_URL + "/shoes/product"+(props.seq+1)+".png"} alt="product" id="prd-img" 
                     onClick={()=>{
                         addWatched(seq) // localStorage에 추가
-                        dispatch(setWatched()) // state 최신화
+                        dispatch(setWatched()) // state 변경 및 localStorage 수정
                         // 상세 페이지로 이동
                         navigate('/detail/'+seq)
                         dispatch(setIsHome(false))
@@ -30,7 +30,7 @@ const Product = (props) => {
                 <h5 id="prd-title"
                     onClick={()=>{
                         addWatched(seq) // localStorage에 추가
-                        dispatch(setWatched()) // state 최신화
+                        dispatch(setWatched()) // state 변경 및 localStorage 수정
                         // 상세 페이지로 이동
                         navigate('/detail/'+seq)
                         dispatch(setIsHome(false))
@@ -45,6 +45,7 @@ const Product = (props) => {
 // 최근 본 상품 localStorage에 추가 메서드
 const addWatched = (itemNum) => {
     let watched = JSON.parse(localStorage.getItem('watched'))
+    if (watched == null) {return;}
     watched.unshift(itemNum)
     let uniqeWatched = new Set(watched) // 중복제거
     localStorage.setItem('watched',JSON.stringify([...uniqeWatched]))
