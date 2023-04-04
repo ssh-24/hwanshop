@@ -12,6 +12,14 @@
   background-size: cover;
   background-position: center;
   border-bottom: 1px solid #4a4a4a3c;
+  margin-top: 56px; /*위에 상단 nav 만큼 띄워줬다. 반응형은 고려 X*/
+}
+
+.nav-area {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 }
 
 #prd-container {

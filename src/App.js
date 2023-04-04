@@ -69,26 +69,28 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="/">HwanShop</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link onClick={()=> {dispatch(setIsHome(true)); navigate("/")}}>Home</Nav.Link>
-            <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/cart")}}>Cart</Nav.Link>
-            <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/about/info")}}>About</Nav.Link>
-          </Nav>
-          <Nav className="ms-auto" id='user-name-area'>
-            {
-              userInfo.isLoading ?
-              <div>Sign in</div> 
-              : userInfo.data[0].sex === 'M' ?
-                <div>🧸 {userInfo.data[0].name}</div>
-                : <div>🐇 {userInfo.data[0].name}</div>
-                
-            }
-          </Nav>
-        </Container>
-      </Navbar>
+      <div className='nav-area'>
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand href="/">HwanShop</Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link onClick={()=> {dispatch(setIsHome(true)); navigate("/")}}>Home</Nav.Link>
+              <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/cart")}}>Cart</Nav.Link>
+              <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/about/info")}}>About</Nav.Link>
+            </Nav>
+            <Nav className="ms-auto" id='user-name-area'>
+              {
+                userInfo.isLoading ?
+                <div>Sign in</div> 
+                : userInfo.data[0].sex === 'M' ?
+                  <div>🧸 {userInfo.data[0].name}</div>
+                  : <div>🐇 {userInfo.data[0].name}</div>
+                  
+              }
+            </Nav>
+          </Container>
+        </Navbar>
+      </div>
 
       {/* 배너 */}
       <div className="main-bg" style={{backgroundImage : 'url('+process.env.PUBLIC_URL + "/banner.png"+')'}}></div>
