@@ -15,6 +15,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from "react-redux"
 import { setIsHome } from './store/ishomeSlice';
 import { setWatched } from './store/watchedSlice';
+import { useQuery } from '@tanstack/react-query';
 
 function App() {
 
@@ -56,6 +57,16 @@ function App() {
   },[count])
 
 
+  // useQuery 사용 시 Promise 객체를 return 해줘야함
+  let userInfo = useQuery(['userInfo',], ()=>
+    axios.get('https://my-json-server.typicode.com/ssh-24/My-JSON-Server/db')
+    .then((result)=>{ 
+      console.log('userInfo', result.data.userInfo)
+      return result.data.userInfo
+    })
+  )
+
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -65,6 +76,16 @@ function App() {
             <Nav.Link onClick={()=> {dispatch(setIsHome(true)); navigate("/")}}>Home</Nav.Link>
             <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/cart")}}>Cart</Nav.Link>
             <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/about/info")}}>About</Nav.Link>
+          </Nav>
+          <Nav className="ms-auto" id='user-name-area'>
+            {
+              userInfo.isLoading ?
+              <div>Sign in</div> 
+              : userInfo.data[0].sex === 'M' ?
+                <div>🧸 {userInfo.data[0].name}</div>
+                : <div>🐇 {userInfo.data[0].name}</div>
+                
+            }
           </Nav>
         </Container>
       </Navbar>
