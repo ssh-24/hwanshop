@@ -14,6 +14,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector, useDispatch } from "react-redux"
 import { setIsHome } from './store/ishomeSlice';
+import { setWatched } from './store/watchedSlice';
 
 function App() {
 
@@ -33,10 +34,19 @@ function App() {
       // localStorage에 초기값 셋팅
       localStorage.setItem('watched',JSON.stringify([]))
     }
+    // 새로고침 시 state도 초기화 됨,
+    // 최근 본 상품에 6번 상품 이후의 것이 있으면 state에 없는 값이라 에러 발생
+    // clean up function 에서 해당 이슈 처리
+    return () => {
+      let arr = []
+      JSON.parse(localStorage.getItem('watched')).map((a,i)=>{if (a < 6) arr.push(a)})
+      localStorage.setItem('watched',JSON.stringify(arr))
+      dispatch(setWatched())
+    }
   },[])
 
   useEffect(()=>{
-    console.log("최근본상품 리스트", watched);
+    console.log("최근 본 상품", watched);
   },[watched])
 
   useEffect(()=>{
