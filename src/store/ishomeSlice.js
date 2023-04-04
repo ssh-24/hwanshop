@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 let isHome = createSlice({
-    name : '최근 본 상품',
+    name : '메인화면 여부',
     initialState : true,
     reducers : {
         setIsHome(state, action) {

@@ -1,13 +1,11 @@
 /*eslint-disable*/
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setWatched } from './store/watchedSlice';
 import { setIsHome } from './store/ishomeSlice';
 
 // 상품 컴포넌트
 const Product = (props) => {
-    const isHome = useSelector((state) => state.isHome) // 홈 화면인지 여부
-
     // 페이지 이동 함수
     let navigate = useNavigate()
 
