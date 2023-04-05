@@ -1,21 +1,27 @@
 /*eslint-disable*/
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 // import data from './data';
 import data from './data_init';
 import Product from './Product';
-import Detail from './pages/Detail';
-import About from './pages/About';
-import Info from './pages/Info';
-import Contact from './pages/Contact';
-import Cart from './pages/Cart';
+// import Detail from './pages/Detail';
+// import Cart from './pages/Cart';
+// import About from './pages/About';
+// import Info from './pages/Info';
+// import Contact from './pages/Contact';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector, useDispatch } from "react-redux"
 import { setIsHome } from './store/ishomeSlice';
 import { setWatched } from './store/watchedSlice';
 import { useQuery } from '@tanstack/react-query';
+// lazy 로딩 (초기로딩 속도 개선)
+const Detail = lazy(()=> import('./pages/Detail'))
+const Cart = lazy(()=> import('./pages/Cart'))
+const About = lazy(()=> import('./pages/About'))
+const Info = lazy(()=> import('./pages/Info'))
+const Contact = lazy(()=> import('./pages/Contact'))
 
 function App() {
 
@@ -117,87 +123,89 @@ function App() {
         : null
       }
 
+      {/* Suspense로 감싸기(로딩중 보여줄 때) */}
+      <Suspense fallback={<div className="alert alert-primary mt-2">Getting data...</div>}>
+        <Routes>
+              <Route path="/" element={
+                  <>
+                    {/* 상품 리스트 (메인 페이지일 때만 보여주기)*/}
+                    <div className="container">
+                      <div className="row">
+                        {
+                          shoes.map((a,i) => {
+                            return (<Product key = {i} seq = {Number(a.id)} data = {a}/>)
+                          })
+                        }
+                      </div>
 
-      <Routes>
-            <Route path="/" element={
-                <>
-                  {/* 상품 리스트 (메인 페이지일 때만 보여주기)*/}
-                  <div className="container">
-                    <div className="row">
+                      {/* 로딩중 모달 */}
                       {
-                        shoes.map((a,i) => {
-                          return (<Product key = {i} seq = {Number(a.id)} data = {a}/>)
-                        })
+                          loading == true ? 
+                          <div className="alert alert-primary mt-2">
+                              Getting data...
+                          </div>
+                          : null
                       }
                     </div>
 
-                    {/* 로딩중 모달 */}
+                    {/* 더보기 버튼 */}
                     {
-                        loading == true ? 
-                        <div className="alert alert-primary mt-2">
-                            Getting data...
-                        </div>
-                        : null
+                      noMoreData == false ?
+                      <>
+                        <button className="btn btn-primary mt-3 mb-2" onClick={()=> {
+                          setLoading(true)
+
+                          // AJAX 요청
+                          axios.get('https://my-json-server.typicode.com/ssh-24/My-JSON-Server/db')
+                          .then((result) => {
+                            let temp;
+                            let rcvData;
+                            if (count === 1) { rcvData = [...result.data.shoes1]}
+                            if (count === 2) { rcvData = [...result.data.shoes2]}
+                            temp = [...shoes, ...rcvData]
+
+                            console.log("기존 state", shoes)
+                            console.log("받아온 데이터", rcvData)
+                            console.log("결과", temp)
+                            console.log("================")
+
+                            //state 변경
+                            setShoes(temp)
+                            setLoading(false)
+                            setCount(count+1) //버튼 카운트 증가
+                          })
+                          .catch(()=> {
+                            setLoading(false)
+                            console.log('REQUEST FAIL')
+                          })
+                        }}>More</button>
+                      </>
+                      : null
                     }
-                  </div>
+                  </>
+              }/>
 
-                  {/* 더보기 버튼 */}
-                  {
-                    noMoreData == false ?
-                    <>
-                      <button className="btn btn-primary mt-3 mb-2" onClick={()=> {
-                        setLoading(true)
+              {/* 상품 상세 페이지 */}
+              <Route path="/detail/:seq" element={
+                <Detail shoes={shoes}/>
+              }/>
 
-                        // AJAX 요청
-                        axios.get('https://my-json-server.typicode.com/ssh-24/My-JSON-Server/db')
-                        .then((result) => {
-                          let temp;
-                          let rcvData;
-                          if (count === 1) { rcvData = [...result.data.shoes1]}
-                          if (count === 2) { rcvData = [...result.data.shoes2]}
-                          temp = [...shoes, ...rcvData]
+              {/* nested routes */}
+              <Route path="/about" element={<About/>}>
+                <Route path='contact' element={<Contact></Contact>}/>
+                <Route path='info' element={<Info></Info>}/>
+              </Route>
 
-                          console.log("기존 state", shoes)
-                          console.log("받아온 데이터", rcvData)
-                          console.log("결과", temp)
-                          console.log("================")
+              {/* 장바구니 페이지 */}
+              <Route path="/cart" element={<Cart/>}/>
 
-                          //state 변경
-                          setShoes(temp)
-                          setLoading(false)
-                          setCount(count+1) //버튼 카운트 증가
-                        })
-                        .catch(()=> {
-                          setLoading(false)
-                          console.log('REQUEST FAIL')
-                        })
-                      }}>More</button>
-                    </>
-                    : null
-                  }
-                </>
-            }/>
-
-            {/* 상품 상세 페이지 */}
-            <Route path="/detail/:seq" element={
-              <Detail shoes={shoes}/>
-            }/>
-
-            {/* nested routes */}
-            <Route path="/about" element={<About/>}>
-              <Route path='contact' element={<Contact></Contact>}/>
-              <Route path='info' element={<Info></Info>}/>
-            </Route>
-
-            {/* 장바구니 페이지 */}
-            <Route path="/cart" element={<Cart/>}/>
-
-            {/* Routes안에 명시되지 않은 페이지 주소 예외처리 */}
-            <Route path="*" element={<>
-              <h1 id='error-header'>404 Not Found</h1>
-              <img width='15%' alt='Not Found' src='https://cdn-icons-png.flaticon.com/512/1102/1102029.png?w=826&t=st=1679291144~exp=1679291744~hmac=d365fae0bd25b8f4aebf963e3ac2f5d9a38e7bddcca77c9880fe2d9676f86ce8'></img>
-            </>}/>
-      </Routes>
+              {/* Routes안에 명시되지 않은 페이지 주소 예외처리 */}
+              <Route path="*" element={<>
+                <h1 id='error-header'>404 Not Found</h1>
+                <img width='15%' alt='Not Found' src='https://cdn-icons-png.flaticon.com/512/1102/1102029.png?w=826&t=st=1679291144~exp=1679291744~hmac=d365fae0bd25b8f4aebf963e3ac2f5d9a38e7bddcca77c9880fe2d9676f86ce8'></img>
+              </>}/>
+        </Routes>
+      </Suspense>
     </div>
   );
 }
