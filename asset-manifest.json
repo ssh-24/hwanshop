@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hwanshop/static/css/main.11bd60c4.css",
-    "main.js": "/hwanshop/static/js/main.607e7d03.js",
+    "main.js": "/hwanshop/static/js/main.5dfd7b34.js",
     "static/js/892.417f4074.chunk.js": "/hwanshop/static/js/892.417f4074.chunk.js",
     "static/js/693.d276c193.chunk.js": "/hwanshop/static/js/693.d276c193.chunk.js",
     "static/js/964.e97fbaf4.chunk.js": "/hwanshop/static/js/964.e97fbaf4.chunk.js",
@@ -11,7 +11,7 @@
     "static/js/881.fe1d05d4.chunk.js": "/hwanshop/static/js/881.fe1d05d4.chunk.js",
     "index.html": "/hwanshop/index.html",
     "main.11bd60c4.css.map": "/hwanshop/static/css/main.11bd60c4.css.map",
-    "main.607e7d03.js.map": "/hwanshop/static/js/main.607e7d03.js.map",
+    "main.5dfd7b34.js.map": "/hwanshop/static/js/main.5dfd7b34.js.map",
     "892.417f4074.chunk.js.map": "/hwanshop/static/js/892.417f4074.chunk.js.map",
     "693.d276c193.chunk.js.map": "/hwanshop/static/js/693.d276c193.chunk.js.map",
     "964.e97fbaf4.chunk.js.map": "/hwanshop/static/js/964.e97fbaf4.chunk.js.map",
@@ -22,6 +22,6 @@
   },
   "entrypoints": [
     "static/css/main.11bd60c4.css",
-    "static/js/main.607e7d03.js"
+    "static/js/main.5dfd7b34.js"
   ]
 }
