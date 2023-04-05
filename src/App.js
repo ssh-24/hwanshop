@@ -78,7 +78,7 @@ function App() {
       <div className='nav-area'>
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="/">HwanShop</Navbar.Brand>
+            <Navbar.Brand href="/hwanshop/">HwanShop</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link onClick={()=> {dispatch(setIsHome(true)); navigate("/")}}>Home</Nav.Link>
               <Nav.Link onClick={()=> {dispatch(setIsHome(false)); navigate("/cart")}}>Cart</Nav.Link>

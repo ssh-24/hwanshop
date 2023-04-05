@@ -16,7 +16,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/hwanshop">
           <App />
         </BrowserRouter>
       </Provider>
