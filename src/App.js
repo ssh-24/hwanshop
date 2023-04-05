@@ -96,12 +96,11 @@ function App() {
       
       {/* 최근 본 상품 */}
       {
-        isHome ?
+        // 홈화면, 최근 본 상품이 있을 때만
+        isHome && localStorage.getItem('watched') != null && JSON.parse(localStorage.getItem('watched')).length > 0 ?
         <div className='recent-view-sidebar'>
           <div>Recent</div>
           {
-            // 최근 본 상품이 있을 때만
-            localStorage.getItem('watched') != null ?
             watched.map((a,i)=>{
               return (
               <div key={i}>
@@ -113,7 +112,6 @@ function App() {
                   }}/>
               </div>)
             })
-            : null
           }
         </div>
         : null
