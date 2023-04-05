@@ -85,7 +85,6 @@ function App() {
                 : userInfo.data[0].sex === 'M' ?
                   <div>🧸 {userInfo.data[0].name}</div>
                   : <div>🐇 {userInfo.data[0].name}</div>
-                  
               }
             </Nav>
           </Container>
@@ -181,7 +180,7 @@ function App() {
                 </>
             }/>
 
-            {/* 상세 페이지 */}
+            {/* 상품 상세 페이지 */}
             <Route path="/detail/:seq" element={
               <Detail shoes={shoes}/>
             }/>
@@ -192,6 +191,7 @@ function App() {
               <Route path='info' element={<Info></Info>}/>
             </Route>
 
+            {/* 장바구니 페이지 */}
             <Route path="/cart" element={<Cart/>}/>
 
             {/* Routes안에 명시되지 않은 페이지 주소 예외처리 */}
@@ -200,9 +200,6 @@ function App() {
               <img width='15%' alt='Not Found' src='https://cdn-icons-png.flaticon.com/512/1102/1102029.png?w=826&t=st=1679291144~exp=1679291744~hmac=d365fae0bd25b8f4aebf963e3ac2f5d9a38e7bddcca77c9880fe2d9676f86ce8'></img>
             </>}/>
       </Routes>
- 
-
-
     </div>
   );
 }
