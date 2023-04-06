@@ -36,7 +36,7 @@ const Cart = () => {
                             <td>{i+1}</td>
                             <td>{a.name}</td>
                             <td>{a.count}</td>
-                            <td width={'7%'}><button className='btn btn-primary pt-1 pb-1' onClick={()=>{
+                            <td width={'7%'}><button className='btn btn-primary pt-1 pb-1 btn-custom' onClick={()=>{
                                 // 재고 없으면 메세지 처리
                                 if (stock[a.id].count <= 0) {
                                     alert(`There is no stock left.`)
@@ -55,7 +55,7 @@ const Cart = () => {
                                     dispatch(subItem({id : a.id}))
                                 }
                             }}>-</button></td>
-                            <td width={'7%'}><button className='btn pt-1 pb-1' onClick={()=>{
+                            <td width={'7%'}><button className='btn pt-1 pb-1 btn-delete' onClick={()=>{
                                 alert("It will be deleted from your shopping cart.")
                                 dispatch(addStock({id : a.id, count : a.count}))
                                 dispatch(subItem({id : a.id}))

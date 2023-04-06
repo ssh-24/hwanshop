@@ -123,6 +123,19 @@
   color: #FFFFFF;
 }
 
+.btn-custom {
+  color: #FFFFFF;
+  background: #007bff;
+  border-color:#007bff;
+}
+
+.btn:hover {
+  border: 1px solid #22222270;
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+  transition: 0.1s;
+}
+
 .App {
   text-align: center;
   /* 이쁜 글씨 */

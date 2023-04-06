@@ -12,13 +12,10 @@ let Btn = styled.button`
     margin : 3px;
     display : inline-block;
     border-radius : 5px;
-    border : 0px;
+    border : 1px solid white;
     width : 40%;
     &:hover {
-        background: #cfe2ff;
-        color: #084298;
-        border : 0.5px;
-        border-color: #b6d4fe;
+        background: #007bff;
         -webkit-transform: scale(1.01);
         transform: scale(1.01);
         transition: 0.2s;

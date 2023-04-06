@@ -120,7 +120,7 @@ const Detail = (props) => {
                         <p id="detail-content">{prd.content}</p>
                         <p id="detail-price">{formatPrice}</p>
                         <input placeholder="amount" id="amount-input" onChange={(e)=>setInputval(e.target.value)} value={inputval}/>
-                        <button className="btn btn-danger" onClick={order}>Order</button>
+                        <button className="btn btn-primary btn-custom" onClick={order}>Order</button>
                     </div>
                 </div>
 

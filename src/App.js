@@ -152,7 +152,7 @@ function App() {
                     {
                       noMoreData == false ?
                       <>
-                        <button className="btn btn-primary mt-3 mb-2" onClick={()=> {
+                        <button className="btn btn-primary mt-3 mb-2 btn-custom" onClick={()=> {
                           setLoading(true)
 
                           // AJAX 요청
