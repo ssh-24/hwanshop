@@ -7,12 +7,12 @@
 }
 
 .main-bg {
-  height: 300px;
-  /* background-image: url('./img/bg.png'); */
-  background-size: cover;
+  height: 22vh; /* vh : 실행중인 스크린 크기에 맞춘 상대적 크기 */
+  background-size: cover; 
+  background-repeat: no-repeat;
   background-position: center;
   border-bottom: 1px solid #4a4a4a3c;
-  margin-top: 56px; /*위에 상단 nav 만큼 띄워줬다. 반응형은 고려 X*/
+  margin-top: 56px!important; /*위에 상단 nav 만큼 띄워줬다. 반응형은 고려 X*/
 }
 
 .nav-area {

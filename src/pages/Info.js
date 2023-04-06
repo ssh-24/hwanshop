@@ -9,7 +9,7 @@ const Info = () => {
                     <p>We will do our best to provide the best.</p>
                 </header>
 
-                <img width='60%' alt="contact" src={process.env.PUBLIC_URL + "/info.png"} />
+                <img width='90%' alt="contact" src={process.env.PUBLIC_URL + "/info.png"} />
                 <h2 id="info-footer">Look around!</h2>
             </div>
         </>

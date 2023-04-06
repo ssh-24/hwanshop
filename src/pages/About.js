@@ -15,9 +15,13 @@ let Btn = styled.button`
     border : 0px;
     width : 40%;
     &:hover {
-        background: #003480e3;
-        color: white;
-        transition: 0.3s;
+        background: #cfe2ff;
+        color: #084298;
+        border : 0.5px;
+        border-color: #b6d4fe;
+        -webkit-transform: scale(1.01);
+        transform: scale(1.01);
+        transition: 0.2s;
       }
 `
 
