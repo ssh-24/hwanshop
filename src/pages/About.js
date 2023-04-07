@@ -14,7 +14,7 @@ let Btn = styled.button`
     border-radius : 5px;
     border : 1px solid white;
     width : 40%;
-    &:hover {
+    &:hover,&:focus {
         background: #007bff;
         -webkit-transform: scale(1.01);
         transform: scale(1.01);

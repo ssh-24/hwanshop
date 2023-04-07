@@ -129,7 +129,7 @@
   border-color:#007bff;
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
   border: 1px solid #22222270;
   -webkit-transform: scale(1.02);
   transform: scale(1.02);
